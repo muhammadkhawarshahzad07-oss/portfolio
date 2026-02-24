@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Khawar Shahzad | Information Technology</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+  }
+  body {
+    background: #f8fafc;
+    color: #1e293b;
+    scroll-behavior: smooth;
+  }
+  nav {
+    position: fixed;
+    top: 0; width: 100%;
+    background: white;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    padding: 15px 10%;
+    display: flex; justify-content: space-between;
+    z-index: 1000;
+  }
+  nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #1e293b;
+  }
+  nav a:hover {
+    color: #2563eb;
+  }
+
+  /* Hero */
+  .hero {
+    margin-top: 80px;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 90px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .hero-text {
+    max-width: 600px;
+  }
+  .hero h1 {
+    font-size: 65px;
+  }
+  .hero h2 {
+    margin: 10px 0;
+    color: #e2e8f0;
+    height: 30px;
+    border-bottom: 2px solid #38bdf8;
+    width: max-content;
+  }
+  .hero img {
+    width: 190px;
+    height: 200px;
+    border-radius: 100%;
+    border: 5px solid white;
+    box-shadow: 0 0 35px rgba(255,255,255,0.6);
+  }
+  .btn {
+    margin-top: 15px;
+    display: inline-block;
+    padding: 10px 22px;
+    background: white;
+    color: #1e3a8a;
+    font-weight: 600;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .btn:hover {
+    transform: translateY(-3px);
+  }
+
+  section {
+    padding: 70px 10%;
+  }
+  h2 {
+    font-size: 30px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  h2::after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background: #2563eb;
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+  }
+
+  /* Summary */
+  .summary {
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  /* Certificates Grid */
+  .certificates {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+    gap: 25px;
+  }
+  .certificate-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .certificate-card:hover {
+    transform: translateY(-5px);
+  }
+  .certificate-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .certificate-card p {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* Projects Grid */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 30px;
+  }
+  .project-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+  .project-image {
+    width: 100%;
+    height: 100%px;
+    object-fit: cover;
+  }
+  .project-content {
+    padding: 20px;
+  }
+  .project-content h3 {
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .project-content p {
+    font-size: 15px;
+    color: #334155;
+  }
+
+  /* Experience Timeline */
+  .timeline {
+    position: relative;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    width: 4px;
+    height: 100%;
+    background: #2563eb;
+  }
+  .timeline-item {
+    margin-left: 70px;
+    margin-bottom: 45px;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    position: relative;
+    transition: 0.3s;
+  }
+  .timeline-item:hover {
+    transform: translateY(-5px);
+  }
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 35px;
+    width: 20px;
+    height: 20px;
+    background: #2563eb;
+    border-radius: 50%;
+  }
+  .company-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .company-header img {
+    width: 55px;
+    margin-right: 15px;
+  }
+
+  /* Skills */
+  .skill {
+    margin-bottom: 30px;
+  }
+  .skill-name {
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .skill-bar {
+    background: #e2e8f0;
+    height: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 8px;
+    background: #2563eb;
+    width: 0%;
+    transition: 2s;
+  }
+
+  /* Contact */
+  #contact .summary {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  /* Footer */
+  footer {
+    background: #1e293b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+  }
+
+  @media (max-width:768px) {
+    .hero {
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero img {
+      margin-top: 35px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div><strong>Muhammad Khawar Shahzad</strong></div>
+  <div>
+    <a href="#summary">About</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <h1>Khawar Shahzad</h1>
+    <h2 id="typing"></h2>
+    <a href="cv.pdf" class="btn" download>Download CV</a>
+    <a href="https://www.linkedin.com/in/muhammad-khawar-shahzad-359314275" target="_blank" class="btn">LinkedIn</a>
+  </div>
+  <img src="profile.jpg" alt="Profile Picture" />
+</div>
+
+<!-- SUMMARY -->
+<section id="summary">
+  <h2>Professional Summary</h2>
+  <div class="summary" data-aos="fade-up">
+    Information Technology Support with over 5 years of hands-on experience in system and network support, hardware/software troubleshooting, and IT operations in large-scale retail environments. Proven ability to maintain system uptime, handle IT infrastructure, and provide timely support in high-pressure environments.
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <h2>Certificates & Qualifications</h2>
+  <div class="certificates" data-aos="fade-up">
+    <div class="certificate-card">
+      <img src="certificate1.jpg" alt="Diploma in IT Support" />
+      <p>Diploma in Information Technology Support - Alison</p>
+    </div>
+    <div class="certificate-card">
+      <img src="certificate2.jpg" alt="Cyber Security Diploma" />
+      <p>Diploma in Cyber Security - Alison</p>
+    </div>
+    <div class="certificate-card">
+      <img src="certificate3.jpg" alt="AI Governance" />
+      <p>Managing AI Governance in Organizations with ISO 42001</p>
+    </div>
+    <div class="certificate-card">
+      <img src="certificate4.jpg" alt="ITIL V3 Certificate" />
+      <p>ITIL V3 Foundation Certificate - Carrefour</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects & Branch Openings/ Leading</h2>
+  <div class="projects" data-aos="fade-up">
+    <div class="project-card">
+      <img src="lead1.jpg" alt="Branch Leading 1" class="project-image" />
+      <div class="project-content">
+        <h3>Performing as a IT Executive at CHASE UP (2025 - Present) </h3>
+        <p>Working as an IT Executive at Chase Up, managing overall IT operations including networking, hardware, and software support. Leading branch IT activities while also providing remote support to other branches. Responsible for system maintenance, troubleshooting, and IT procurement to ensure smooth business operations.</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="branch2.jpg" alt="Branch Opening 2" class="project-image" />
+      <div class="project-content">
+        <h3>New Branch Carrefour supermarket Opening - Clifton Karachi in 2024</h3>
+        <p>Successfully managed and executed the IT infrastructure setup for a new retail branch in Clifton Karachi, ensuring seamless POS and network integration.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2>Professional Experience</h2>
+  <div class="timeline" data-aos="fade-up">
+    <div class="timeline-item">
+      <div class="company-header">
+        <img src="chaseup.png" alt="Chase Up" />
+        <div>
+          <strong>IT Executive – Chase Up</strong><br />
+          <small>March 2025 – Present</small>
+        </div>
+      </div>
+      <ul>
+        <li>Providing software and hardware support to retail operations.</li>
+        <li>Troubleshooting issues related to FOURGEN/ Retail Pro POS systems (Windows-based)
+including proxy printing, system freezes, etc.</li>
+	<li>Handling NVR/DVR surveillance systems and escalating hardware failures to procurement.</li>
+	<li>Managing and servicing HP A4 and Epson color printers, including ink refills.</li>
+	<li>Configuring and troubleshooting D-Link IP phones and wireless access points.</li>
+	<li>Maintaining daily server backups and ensuring uptime of FOURGEN/ Retail Pro & PABX
+servers.</li>
+	<li>Managing network connectivity and routers (D-Link, Tenda, TP-Link, PTCL), and liaising
+with ISP providers.</li>
+	<li>Supporting scale updates, price/promotion uploads, and resolving all IT-related issues at
+the store level.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="company-header">
+        <img src="carrefour.png" alt="Carrefour" />
+        <div>
+          <strong>IT Officer – Carrefour (MAF Pvt Ltd)</strong><br />
+          <small>April 2021 – November 2024</small>
+        </div>
+      </div>
+      <ul>
+        <li>Computer Networks, MPLS Networks, Fiber Optics, Cisco & TP Link routers configuration,
+VPNs, VLAN, DHCP, CISCO Router 890 series, Switch Catalyst 9200L Series.</li>
+        <li>DIGI Weighing Scales Configuration and Services.</li>
+        <li>Update assets management system in intranet Portal.</li>
+        <li>IBM POS Machines, Systems and Printers of Hardware/Software Configuration and
+Troubleshooting.</li>
+	<li>Perform the test periodically on I.T System in order to be proactive for system failure.</li>
+	<li>Gathering and analyzing data to diagnose problems with computer systems.</li>
+	<li>Manage record of IT accessories which have given to users Installing, maintaining and
+monitoring wide range of network and their performance.</li>
+	<li>Install and manage AD and DC on the server.</li>
+	<li>Installation and configuration of Windows server, network printers, Wi-Fi access points
+and support software.</li>
+	<li>P2P connectivity over Network.</li>
+	<li>Outlook account configuration on IMAP Design.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="company-header">
+        <img src="chunkymonkey.png" alt="Chunky Monkey" />
+        <div>
+          <strong>IT Support – Chunky Monkey</strong><br />
+          <small>Feb 2017 – March 2021</small>
+        </div>
+      </div>
+      <ul>
+        <li>Basic Networking Device Configuration.</li>
+        <li>Windows Setup and Installation.</li>
+        <li>CCTV Camera Configuration and Installation.</li>
+	<li>Server Handling.</li>
+	<li>PBX Knowledge and Maintenance.</li>
+	<li>Inverter Knowledge.</li>
+	<li>RFID Devices Configuration.</li>
+	<li>Projector Knowledge and Maintenance.</li>
+	<li>Computer Hardware & Software.</li>
+	<li>Arcade Games Installing & Repairing.</li>
+	<li>POS Configuration and Installation.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Technical Skills</h2>
+  <div class="skill" data-aos="fade-up">
+    <div class="skill-name">Operating Systems: Windows Server, Windows 10,
+Windows 7, Linux ubuntu</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+  </div>
+  <div class="skill" data-aos="fade-up">
+    <div class="skill-name">Networking: VLAN, DHCP, VPN, Fiber Optics</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+  </div>
+  <div class="skill" data-aos="fade-up">
+    <div class="skill-name">Hardware: HP, DELL, Lenovo, HP/Epson Printers,
+POS, IBM Machines</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+  </div>
+<div class="skill" data-aos="fade-up">
+    <div class="skill-name">Software: FOURGEN, Retail Pro, Outlook (IMAP,
+POP3), MS Excel, photoshop, remote Utilities Viewer etc.</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+  </div>
+<div class="skill" data-aos="fade-up">
+    <div class="skill-name">Servers: File, AD, DC, FOURGEN, Retail Pro, PABX</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+  </div>
+<div class="skill" data-aos="fade-up">
+    <div class="skill-name">Routers & Devices: Cisco, TP-Link, Tenda, D-Link</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+  </div>
+<div class="skill" data-aos="fade-up">
+    <div class="skill-name">Other: NVR/DVR and Camera Configuration, IP
+Phones, Access Points, System Backups, Weighing
+Scale and Cash till Configuration</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="summary" data-aos="fade-up">
+    📍 Karachi, Multan - Pakistan<br /><br />
+    📧 muhammadkhawarshahzad07@gmail.com<br /><br />
+    📞 +92 301 2652857 (available on WhatsApp 24/7) 
+  </div>
+</section>
+
+<footer>
+  © 2026 Khawar Shahzad | Information Technology
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000 });
+
+  /* Typing effect */
+  const texts = ["System Support Analyst", "Enterprise Network Specialist", "Retail IT Operations Expert"];
+  let textIndex = 0, charIndex = 0, isDeleting = false, currentText = "";
+
+  function typeWriter() {
+    if (textIndex < texts.length) {
+      if (!isDeleting && charIndex <= texts[textIndex].length) {
+        currentText = texts[textIndex].substring(0, charIndex++);
+      } else if (isDeleting && charIndex >= 0) {
+        currentText = texts[textIndex].substring(0, charIndex--);
+      }
+      document.getElementById("typing").textContent = currentText;
+
+      if (charIndex === texts[textIndex].length) {
+        isDeleting = true;
+        setTimeout(typeWriter, 1500);
+        return;
+      }
+      if (charIndex === 0) {
+        isDeleting = false;
+        textIndex++;
+      }
+    }
+    if (textIndex === texts.length) textIndex = 0;
+    setTimeout(typeWriter, 100);
+  }
+  typeWriter();
+
+  /* Animate skill bars */
+  const skills = document.querySelectorAll(".skill-fill");
+  const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target;
+        fill.style.width = fill.getAttribute("style").match(/width:\s*(\d+)%/)[1] + "%";
+      }
+    });
+  }, { threshold: 0.5 });
+
+  skills.forEach(skill => skillObserver.observe(skill));
+</script>
+
+</body>
+</html>
