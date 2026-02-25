@@ -7,6 +7,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 <style>
+/* Stats Section */
+.stats {
+  background: #f1f5f9;
+  padding: 60px 10%;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  text-align: center;
+}
+
+.stat-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+}
+
+.stat-box h3 {
+  font-size: 35px;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.stat-box p {
+  font-weight: 600;
+  color: #334155;
+}
   * {
     margin: 0;
     padding: 0;
@@ -39,7 +74,7 @@
 
   /* Hero */
   .hero {
-    margin-top: 80px;
+    margin-top: 30px;
     background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: white;
     padding: 90px 10%;
@@ -210,8 +245,8 @@
     margin-bottom: 15px;
   }
   .company-header img {
-    width: 55px;
-    margin-right: 15px;
+    width: 85px;
+    margin-right: 25px;
   }
 
   /* Skills */
@@ -250,15 +285,28 @@
     margin-top: 40px;
   }
 
-  @media (max-width:768px) {
-    .hero {
-      flex-direction: column;
-      text-align: center;
-    }
-    .hero img {
-      margin-top: 35px;
-    }
-  }
+.hero img {
+  width: 290px;
+  height: 300px;
+  border-radius: 100%;
+  border: 5px solid white;
+  box-shadow: 0 0 35px rgba(255,255,255,0.6);
+}
+.hero-img {
+  transition: all 0.4s ease;
+}
+
+.hero-img.small {
+  width: 65px !important;
+  height: 65px !important;
+  position: fixed;
+  top: 15px;
+  left: 60px;
+  border: 2px solid #2563eb;
+  box-shadow: none;
+  z-index: 3000;
+}
+  
 </style>
 </head>
 <body>
@@ -282,14 +330,39 @@
     <a href="cv.pdf" class="btn" download>Download CV</a>
     <a href="https://www.linkedin.com/in/muhammad-khawar-shahzad-359314275" target="_blank" class="btn">LinkedIn</a>
   </div>
-  <img src="profile.jpg" alt="Profile Picture" />
+  <img src="profile.jpg" alt="Profile Picture" id="profilePic" class="hero-img" />
 </div>
+
 
 <!-- SUMMARY -->
 <section id="summary">
   <h2>Professional Summary</h2>
   <div class="summary" data-aos="fade-up">
     Information Technology Support with over 5 years of hands-on experience in system and network support, hardware/software troubleshooting, and IT operations in large-scale retail environments. Proven ability to maintain system uptime, handle IT infrastructure, and provide timely support in high-pressure environments.
+  </div>
+</section>
+<!-- STATS SECTION -->
+<section class="stats">
+  <div class="stats-container">
+    <div class="stat-box">
+      <h3>5+</h3>
+      <p>Years Experience</p>
+    </div>
+
+    <div class="stat-box">
+      <h3>3</h3>
+      <p>Major Organizations</p>
+    </div>
+
+    <div class="stat-box">
+      <h3>50+</h3>
+      <p>IT Deployments</p>
+    </div>
+
+    <div class="stat-box">
+      <h3>100%</h3>
+      <p>System Uptime Focus</p>
+    </div>
   </div>
 </section>
 
@@ -321,7 +394,7 @@
   <h2>Projects & Branch Openings/ Leading</h2>
   <div class="projects" data-aos="fade-up">
     <div class="project-card">
-      <img src="Lead1.jpg" alt="Branch Leading 1" class="project-image" />
+      <img src="lead1.jpg" alt="Branch Leading 1" class="project-image" />
       <div class="project-content">
         <h3>Performing as a IT Executive at CHASE UP (2025 - Present) </h3>
         <p>Working as an IT Executive at Chase Up, managing overall IT operations including networking, hardware, and software support. Leading branch IT activities while also providing remote support to other branches. Responsible for system maintenance, troubleshooting, and IT procurement to ensure smooth business operations.</p>
@@ -513,6 +586,17 @@ Scale and Cash till Configuration</div>
   }, { threshold: 0.5 });
 
   skills.forEach(skill => skillObserver.observe(skill));
+
+/* Profile image scroll effect */
+window.addEventListener("scroll", function () {
+  const profilePic = document.getElementById("profilePic");
+
+  if (window.scrollY > 120) {
+    profilePic.classList.add("small");
+  } else {
+    profilePic.classList.remove("small");
+  }
+});
 </script>
 
 </body>
