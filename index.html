@@ -136,14 +136,16 @@
   }
 
   /* Summary */
-  .summary {
-    background: white;
-    padding: 35px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  .summary{
+background:white;
+padding:35px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+line-height:1.7;
+font-size:16px;
   }
 
-  /* Certificates Grid */
+/* Certificates Grid */
   .certificates {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
@@ -188,8 +190,9 @@
   }
   .project-image {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  border-bottom:1px solid #e5e7eb;
   }
   .project-content {
     padding: 20px;
@@ -296,68 +299,38 @@
 }
 
 .hero-img.small {
-  width: 65px !important;
-  height: 65px !important;
+  width: 60px !important;
+  height: 60px !important;
   position: fixed;
   top: 15px;
-  left: 60px;
+  left: 15px;
   border: 2px solid #2563eb;
   box-shadow: none;
   z-index: 3000;
 }
-
+	
 /* MOBILE RESPONSIVE FIX */
 	@media (max-width:768px){
 
 nav{
-padding:12px 20px;
+padding:12px 15px;
+flex-direction:column;
+align-items:flex-start;
 }
 
-nav div:first-child{
-width:100%;
-margin-bottom:5px;
+nav div:last-child{
+display:flex;
+flex-wrap:wrap;
+margin-top:5px;
 }
 
 nav a{
-margin-left:10px;
+margin:5px 10px 5px 0;
 font-size:14px;
 }
 
-.hero{
-flex-direction:column;
-text-align:center;
-padding:80px 20px;
-}
-
-.hero-text{
-max-width:100%;
-}
-
-.hero h1{
-font-size:36px;
-}
-
-.hero h2{
-margin:auto;
-}
-
-.hero img{
-width:150px;
-height:150px;
-margin-top:20px;
-object-fit:cover;
-}
-
-section{
-padding:60px 20px;
-}
-
-.stats{
-padding:50px 20px;
-}
-
 	}
-	
+		
 </style>
 </head>
 <body>
