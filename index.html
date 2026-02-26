@@ -339,8 +339,7 @@ font-size:16px;
   z-index: 3000;
 }
 	
-/* MOBILE RESPONSIVE FIX */
-	@media (max-width:768px){
+@media (max-width:768px){
 
 nav{
 padding:12px 15px;
@@ -359,22 +358,21 @@ margin:5px 10px 5px 0;
 font-size:14px;
 }
 
-		/* ADD THIS */
+.nav-profile{
+display:block;
+}
 
- .nav-profile{
- display:block;
- }
+.nav-left{
+width:100%;
+margin-bottom:8px;
+}
 
- .nav-left{
- width:100%;
- margin-bottom:8px;
- }
+.nav-links{
+width:100%;
+}
 
- .nav-links{
- width:100%;
- }
+/* HERO MOBILE FIX */
 
-}	
 .hero{
 flex-direction:column;
 text-align:center;
@@ -400,7 +398,7 @@ margin-top:20px;
 }
 
 }
-		
+	
 </style>
 </head>
 <body>
@@ -695,6 +693,7 @@ window.addEventListener("scroll", function () {
     profilePic.classList.remove("small");
   }
 });
+	
 /* Navbar active link on scroll */
 const navProfile = document.getElementById("navProfile");
 
@@ -709,7 +708,7 @@ window.addEventListener("scroll", function () {
     navProfile.style.display = "none";
   }
 });
-	
+
 </script>
 
 </body>
