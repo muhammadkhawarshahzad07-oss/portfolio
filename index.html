@@ -79,6 +79,27 @@
   color: #2563eb;
   border-bottom: 2px solid #2563eb;
 }
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.nav-profile{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  display:none;   /* desktop pe hidden */
+}
+
+.nav-name{
+  font-size:18px;
+}
+
+.nav-links{
+  display:flex;
+  flex-wrap:wrap;
+}	
 	
  /* Hero */
    .hero {
@@ -337,7 +358,24 @@ nav a{
 margin:5px 10px 5px 0;
 font-size:14px;
 }
-		.hero{
+
+		/* ADD THIS */
+
+ .nav-profile{
+ display:block;
+ }
+
+ .nav-left{
+ width:100%;
+ margin-bottom:8px;
+ }
+
+ .nav-links{
+ width:100%;
+ }
+
+}	
+.hero{
 flex-direction:column;
 text-align:center;
 padding:110px 20px 60px;
@@ -368,8 +406,12 @@ margin-top:20px;
 <body>
 
 <nav>
-  <div><strong>Muhammad Khawar Shahzad</strong></div>
-  <div>
+  <div class="nav-left">
+    <img src="profile.jpg" alt="Profile" class="nav-profile" id="navProfile">
+    <strong class="nav-name">Muhammad Khawar Shahzad</strong>
+  </div>
+
+  <div class="nav-links">
     <a href="#summary">About</a>
     <a href="#certificates">Certificates</a>
     <a href="#projects">Projects</a>
@@ -654,31 +696,18 @@ window.addEventListener("scroll", function () {
   }
 });
 /* Navbar active link on scroll */
+const navProfile = document.getElementById("navProfile");
 
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
+window.addEventListener("scroll", function () {
+  const profilePic = document.getElementById("profilePic");
 
-window.addEventListener("scroll", () => {
-
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 150;
-    const sectionHeight = section.offsetHeight;
-
-    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-
-    if (link.getAttribute("href").includes(current)) {
-      link.classList.add("active");
-    }
-  });
-
+  if (window.scrollY > 120) {
+    profilePic.classList.add("small");
+    navProfile.style.display = "block";
+  } else {
+    profilePic.classList.remove("small");
+    navProfile.style.display = "none";
+  }
 });
 	
 </script>
