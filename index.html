@@ -678,8 +678,21 @@ Scale and Cash till Configuration</div>
   skills.forEach(skill => skillObserver.observe(skill));
 
 /* Profile image scroll effect */
+
 window.addEventListener("scroll", function () {
-  /* Active menu highlight on scroll */
+
+  const profilePic = document.getElementById("profilePic");
+
+  if (window.scrollY > 120) {
+    profilePic.classList.add("small");
+  } else {
+    profilePic.classList.remove("small");
+  }
+
+});
+
+
+/* Active menu highlight */
 
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".nav-links a");
@@ -689,24 +702,27 @@ window.addEventListener("scroll", () => {
   let current = "";
 
   sections.forEach(section => {
+
     const sectionTop = section.offsetTop - 120;
-    const sectionHeight = section.clientHeight;
 
     if (scrollY >= sectionTop) {
       current = section.getAttribute("id");
     }
+
   });
 
   navLinks.forEach(link => {
+
     link.classList.remove("active");
 
     if (link.getAttribute("href") === "#" + current) {
       link.classList.add("active");
     }
+
   });
 
 });
-	
+
 </script>
 
 </body>
