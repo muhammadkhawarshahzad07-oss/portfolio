@@ -385,7 +385,12 @@ width:180px;
 height:180px;
 margin-top:20px;
 }
-
+.hero-img.small{
+  width:45px !important;
+  height:45px !important;
+  top:60px;
+  left:10px;
+}
 }
 	
 </style>
@@ -682,18 +687,6 @@ window.addEventListener("scroll", function () {
   }
 });
 	
-/* Navbar active link on scroll */
-
-	window.addEventListener("scroll", function () {
-  const profilePic = document.getElementById("profilePic");
-
-  if (window.scrollY > 120) {
-    profilePic.classList.add("small");
-  } else {
-    profilePic.classList.remove("small");
-  }
-});
-
 </script>
 
 </body>
