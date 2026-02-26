@@ -84,14 +84,7 @@
   align-items:center;
   gap:12px;
 }
-
-.nav-profile{
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  display:none;   /* desktop pe hidden */
-}
-
+	
 .nav-name{
   font-size:18px;
 }
@@ -357,11 +350,7 @@ nav a{
 margin:5px 10px 5px 0;
 font-size:14px;
 }
-
-.nav-profile{
-display:block;
-}
-
+	
 .nav-left{
 width:100%;
 margin-bottom:8px;
@@ -405,7 +394,6 @@ margin-top:20px;
 
 <nav>
   <div class="nav-left">
-    <img src="profile.jpg" alt="Profile" class="nav-profile" id="navProfile">
     <strong class="nav-name">Muhammad Khawar Shahzad</strong>
   </div>
 
@@ -695,17 +683,14 @@ window.addEventListener("scroll", function () {
 });
 	
 /* Navbar active link on scroll */
-const navProfile = document.getElementById("navProfile");
 
-window.addEventListener("scroll", function () {
+	window.addEventListener("scroll", function () {
   const profilePic = document.getElementById("profilePic");
 
   if (window.scrollY > 120) {
     profilePic.classList.add("small");
-    navProfile.style.display = "block";
   } else {
     profilePic.classList.remove("small");
-    navProfile.style.display = "none";
   }
 });
 
