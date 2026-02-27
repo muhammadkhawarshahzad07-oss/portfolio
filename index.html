@@ -21,7 +21,9 @@
 }
 
 .stat-box {
-  background: white;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -97,17 +99,19 @@
 	
  /* Hero */
    .hero {
-    margin-top: 30px;
-    background: linear-gradient(135deg, #1e3a8a, #2563eb);
-    color: white;
-    padding: 90px 10%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap:30px;
-    position: relative;
-   }
+  margin-top: 30px;
+  background: linear-gradient(-45deg, #1e3a8a, #2563eb, #0ea5e9, #1d4ed8);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+  color: white;
+  padding: 90px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap:30px;
+  position: relative;
+}
 	
   .hero-text {
   max-width: 600px;
@@ -136,8 +140,9 @@
     transition: 0.3s;
   }
   .btn:hover {
-    transform: translateY(-3px);
-  }
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
 
   section {
     padding: 70px 10%;
@@ -174,7 +179,9 @@ font-size:16px;
     gap: 25px;
   }
   .certificate-card {
-    background: white;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     padding: 15px;
@@ -201,7 +208,9 @@ font-size:16px;
     gap: 30px;
   }
   .project-card {
-    background: white;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     overflow: hidden;
@@ -243,7 +252,9 @@ font-size:16px;
   .timeline-item {
     margin-left: 70px;
     margin-bottom: 45px;
-    background: white;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -318,8 +329,15 @@ font-size:16px;
   margin-left: auto;
 }
 	
-.hero-img {
+  .hero-img {
   transition: all 0.4s ease;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
 }
 
 .hero-img.small {
@@ -331,6 +349,22 @@ font-size:16px;
   border:2px solid #2563eb;
   box-shadow:none;
   z-index:2000;
+}
+
+/* ===== DARK MODE ===== */
+
+
+.dark-mode nav {
+  background: #1e293b;
+}
+
+.dark-mode .summary,
+.dark-mode .project-card,
+.dark-mode .certificate-card,
+.dark-mode .stat-box,
+.dark-mode .timeline-item {
+  background: #1e293b;
+  color: white;
 }
 	
 @media (max-width:768px){
@@ -399,15 +433,46 @@ display:block;
   box-shadow:none;
   z-index:2000;
 }
-	
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.dark-mode {
+  background: #0f172a;
+  color: white;
+}
+
+.dark-mode nav {
+  background: #1e293b;
+}
+
+.dark-mode .summary,
+.dark-mode .project-card,
+.dark-mode .certificate-card,
+.dark-mode .stat-box,
+.dark-mode .timeline-item {
+  background: #1e293b;
+  color: white;
+}
+
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #1e3a8a;
+  z-index: 5000;
+}	
 }
 </style>
 </head>
 <body>
-
+<div id="loader"></div>
 <nav>
   <div class="nav-left">
     <strong class="nav-name">Muhammad Khawar Shahzad</strong>
+    <button id="darkToggle" style="margin-left:15px; padding:5px 10px; border:none; cursor:pointer;">🌙</button>
   </div>
 
   <div class="nav-links">
@@ -442,7 +507,7 @@ display:block;
 <section class="stats">
   <div class="stats-container">
     <div class="stat-box">
-      <h3>5+</h3>
+      <h3 class="counter" data-target="5">0</h3>
       <p>Years Experience</p>
     </div>
 
@@ -698,6 +763,24 @@ window.addEventListener("scroll", function () {
 
 });
 
+const counters = document.querySelectorAll(".counter");
+
+counters.forEach(counter => {
+  const updateCounter = () => {
+    const target = +counter.getAttribute("data-target");
+    const count = +counter.innerText;
+    const increment = target / 100;
+
+    if (count < target) {
+      counter.innerText = Math.ceil(count + increment);
+      setTimeout(updateCounter, 20);
+    } else {
+      counter.innerText = target + "+";
+    }
+  };
+  updateCounter();
+});
+
 
 /* Active menu highlight */
 
@@ -728,6 +811,14 @@ window.addEventListener("scroll", () => {
 
   });
 
+});
+
+document.getElementById("darkToggle").onclick = function(){
+  document.body.classList.toggle("dark-mode");
+};
+
+window.addEventListener("load", ()=>{
+  document.getElementById("loader").style.display="none";
 });
 
 </script>
