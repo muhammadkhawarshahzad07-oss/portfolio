@@ -481,3 +481,61 @@ display:block;
 .whatsapp-float:hover{
   transform: scale(1.1);
 }
+
+/* ===== MOBILE PORTFOLIO IMPROVEMENT ===== */
+
+@media (max-width:768px){
+
+section{
+padding:60px 20px;
+}
+
+h2{
+font-size:24px;
+text-align:center;
+}
+
+h2::after{
+left:50%;
+transform:translateX(-50%);
+}
+
+.summary,
+.project-card,
+.certificate-card,
+.timeline-item,
+.stat-box{
+padding:25px;
+}
+
+.stats-container{
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.projects{
+grid-template-columns:1fr;
+}
+
+.certificates{
+grid-template-columns:1fr 1fr;
+}
+
+.timeline::before{
+left:10px;
+}
+
+.timeline-item{
+margin-left:35px;
+}
+
+.company-header img{
+width:60px;
+margin-right:15px;
+}
+
+.skill-name{
+font-size:14px;
+}
+
+}
