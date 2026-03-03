@@ -112,16 +112,4 @@ document.getElementById("darkToggle").onclick = function(){
 window.addEventListener("load", ()=>{
   document.getElementById("loader").style.display="none";
 });
-/* Hire Form Success Message */
 
-const hireForm = document.getElementById("hireForm");
-
-if(hireForm){
-  hireForm.addEventListener("submit", function(e){
-    e.preventDefault();
-
-    document.getElementById("successMsg").style.display = "block";
-
-    hireForm.reset();
-  });
-}
