@@ -127,8 +127,14 @@ if (hireForm) {
     })
     .then(response => {
       if (response.ok) {
-        document.getElementById("successMsg").style.display = "block";
+        const successMsg = document.getElementById("successMsg");
+
+        successMsg.classList.add("show");
         hireForm.reset();
+       setTimeout(() => {
+          successMsg.classList.remove("show");
+        }, 5000);
+
       } else {
         alert("Something went wrong. Please try again.");
       }
@@ -138,3 +144,4 @@ if (hireForm) {
     });
   });
 }
+
