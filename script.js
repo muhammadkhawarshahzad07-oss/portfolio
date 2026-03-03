@@ -112,4 +112,29 @@ document.getElementById("darkToggle").onclick = function(){
 window.addEventListener("load", ()=>{
   document.getElementById("loader").style.display="none";
 });
+/* Hire Form AJAX Submit - No Redirect */
 
+const hireForm = document.getElementById("hireForm");
+
+if (hireForm) {
+  hireForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    fetch(hireForm.action, {
+      method: "POST",
+      body: new FormData(hireForm),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        document.getElementById("successMsg").style.display = "block";
+        hireForm.reset();
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    })
+    .catch(error => {
+      alert("Error sending message.");
+    });
+  });
+}
